@@ -1,0 +1,23 @@
+type Todo {
+  id: ID!
+  title: String!
+  description: String
+  user_id: ID!
+}
+
+input TodoInput {
+  title: String!
+  description: String
+  user_id: ID!
+}
+
+extend type Query {
+  todo(id: ID!): Todo
+  todos: [Todo!]!
+}
+
+extend type Mutation {
+  createTodo(data: TodoInput!): Todo!
+  updateTodo(id: ID!, data: TodoInput!): Todo!
+  deleteTodo(id: ID!): Todo!
+}
